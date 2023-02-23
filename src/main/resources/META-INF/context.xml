@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<Context path="/products">
+    <Resource
+        auth="Container"
+        driverClassName="com.mysql.cj.jdbc.Driver"
+        maxIdle="25" maxTotal="100"
+        maxWaitMillis="10000"
+        name="jdbc/ProductDB"
+        username="root"
+        password="root"
+        type="javax.sql.DataSource"
+        url="jdbc:mysql://localhost:8889/jsf_products" />
+</Context>
+-->
