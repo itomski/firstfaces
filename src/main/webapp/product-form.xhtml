@@ -26,6 +26,15 @@
          </div>
 
          <div class="mb-3">
+            <h:outputLabel for="availableAt" styleClass="form-label" value="Verfügbar ab" />
+            <h:inputText id="availableAt" value="#{productBean.curProduct.availableAt}" required="true" styleClass="form-control">
+               <ui:remove><c:convertDateTime type="date" pattern="dd.MM.yyyy" /></ui:remove>
+               <c:converter converterId="localDateConverter" />
+            </h:inputText>
+            <h:message for="availableAt" />
+         </div>
+
+         <div class="mb-3">
             <h:outputLabel for="price" styleClass="form-label" value="Preis" />
             <h:inputText id="price" value="#{productBean.curProduct.price}" required="true" styleClass="form-control" />
             <h:message for="price" />

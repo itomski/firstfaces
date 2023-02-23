@@ -29,10 +29,24 @@ public class ProductBean implements Serializable {
         return query.getResultList();
     }
 
+    public String delete(Product product) {
+        entityManager.getTransaction().begin();
+        entityManager.remove(product);
+        entityManager.getTransaction().commit();
+        return "products";
+    }
+
+    public String edit(Product product) {
+        curProduct = product;
+        return "product-form";
+    }
+
     public String save() {
         if(curProduct != null) {
             if(curProduct.getId() != null) {
-                // TODO: Update
+                entityManager.getTransaction().begin();
+                entityManager.merge(curProduct);
+                entityManager.getTransaction().commit();
             }
             else {
                 entityManager.getTransaction().begin();
