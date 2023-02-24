@@ -50,7 +50,7 @@ public class ProductBean implements Serializable {
     }
 
     public void categoryChangeListenerAjax(AjaxBehaviorEvent event) {
-        msg = "Wert hast sich geändert...";
+        msg = "Geändert auf " + curProduct.getCategory();
     }
 
     public String getMsg() {
