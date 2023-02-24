@@ -24,15 +24,18 @@ public class Product implements Serializable {
 
     private LocalDate availableAt;
 
+    private String category;
+
     private double price;
 
     public Product() {
     }
 
-    public Product(String name, String description, LocalDate availableAt, double price) {
+    public Product(String name, String description, LocalDate availableAt, String category, double price) {
         this.name = name;
         this.description = description;
         this.availableAt = availableAt;
+        this.category = category;
         this.price = price;
     }
 
@@ -74,5 +77,13 @@ public class Product implements Serializable {
 
     public void setAvailableAt(LocalDate availableAt) {
         this.availableAt = availableAt;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

@@ -11,33 +11,34 @@
       <ui:define name="mainBox">
          <h:dataTable value="#{productBean.products}" var="product" styleClass="table">
             <h:column>
-               <c:facet name="header">ID</c:facet>
+               <c:facet name="header">#{ui['lbl.product.id']}</c:facet>
                #{product.id}
             </h:column>
             <h:column>
-               <c:facet name="header">Name</c:facet>
+               <c:facet name="header">#{ui['lbl.product.name']}</c:facet>
                #{product.name}
             </h:column>
 
             <h:column>
-               <c:facet name="header">Verfügbar ab</c:facet>
+               <c:facet name="header">#{ui['lbl.product.availableAt']}</c:facet>
                <h:outputText value="#{product.availableAt}">
                   <c:converter converterId="localDateConverter" />
                </h:outputText>
             </h:column>
 
             <h:column>
-               <c:facet name="header">Preis</c:facet>
+               <c:facet name="header">#{ui['lbl.product.price']}</c:facet>
                #{product.price}
             </h:column>
 
             <h:column>
-               <c:facet name="header"> </c:facet>
                <h:form>
-                  <h:commandButton action="#{productBean.edit(product)}" value="Bearbeiten" styleClass="btn btn-warning" />
+                  <h:commandButton action="#{productBean.edit(product)}" value="#{ui['btn.edit']}" styleClass="btn btn-warning" />
                </h:form>
+            </h:column>
+            <h:column>
                <h:form>
-                  <h:commandButton action="#{productBean.delete(product)}" value="Löschen" styleClass="btn btn-danger" />
+                  <h:commandButton action="#{productBean.delete(product)}" value="#{ui['btn.delete']}" styleClass="btn btn-danger" />
                </h:form>
             </h:column>
          </h:dataTable>

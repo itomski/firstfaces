@@ -4,4 +4,14 @@
               xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
                                   https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_3_0.xsd">
 
+    <application>
+        <locale-config>
+            <default-locale>de</default-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>de.lubowiecki.firstfaces.lang.messages</base-name>
+            <var>ui</var>
+        </resource-bundle>
+    </application>
+
 </faces-config>

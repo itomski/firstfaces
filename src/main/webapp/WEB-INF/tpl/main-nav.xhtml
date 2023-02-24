@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<nav xmlns:h="http://xmlns.jcp.org/jsf/html"
+     class="navbar navbar-expand-sm navbar-dark bg-dark">
+
+   <div class="container">
+
+      <a href="/firstfaces_war_exploded/" class="navbar-brand">Shop</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+         <i class="navbar-toggler-icon"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+         <ul class="navbar-nav">
+            <li class="nav-item">
+               <h:link outcome="products" styleClass="nav-link">#{ui['nav.products']}</h:link>
+            </li>
+            <li class="nav-item">
+               <h:link outcome="product-form" styleClass="nav-link">#{ui['nav.add']}</h:link>
+            </li>
+            <li class="nav-item">
+               <h:form>
+                  <h:commandButton styleClass="btn btn-outline-light"  value="DE" action="#{langBean.setLang('de')}" />
+                  <h:commandButton styleClass="btn btn-outline-light"  value="EN" action="#{langBean.setLang('en')}" />
+               </h:form>
+            </li>
+         </ul>
+      </div>
+   </div>
+</nav>

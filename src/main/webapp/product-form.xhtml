@@ -14,19 +14,34 @@
          <h:inputHidden value="#{productBean.curProduct.id}" />
 
          <div class="mb-3">
-            <h:outputLabel for="name" styleClass="form-label" value="Name"/>
-            <h:inputText id="name" value="#{productBean.curProduct.name}" required="true" styleClass="form-control" />
+            <h:outputLabel for="name" styleClass="form-label" value="#{ui['lbl.product.name']}"/>
+            <h:inputText id="name" value="#{productBean.curProduct.name}" required="true" styleClass="form-control">
+               <c:validateLength minimum="2" maximum="50" />
+               <ui:remove><c:validateRegex pattern="^[a-zA-Z]+$" /></ui:remove>
+               <c:validator validatorId="nameValidator" />
+            </h:inputText>
             <h:message for="name" />
          </div>
 
          <div class="mb-3">
-            <h:outputLabel for="description" styleClass="form-label" value="Beschreibung" />
+            <h:outputLabel for="description" styleClass="form-label" value="#{ui['lbl.product.description']}" />
             <h:inputTextarea id="description" value="#{productBean.curProduct.description}" required="true" styleClass="form-control" rows="5" />
             <h:message for="description" />
          </div>
 
          <div class="mb-3">
-            <h:outputLabel for="availableAt" styleClass="form-label" value="Verfügbar ab" />
+            <h:outputLabel for="category" styleClass="form-label" value="#{ui['lbl.product.cytegory']}" />
+            <h:selectOneMenu id="category" value="#{productBean.curProduct.category}" styleClass="form-select">
+               <c:selectItems value="#{productBean.categories}" />
+               <c:valueChangeListener type="de.lubowiecki.firstfaces.listener.CategoryChangeListener" />
+               <c:ajax event="valueChange" listener="#{productBean.categoryChangeListenerAjax}" render="msg" />
+            </h:selectOneMenu>
+            <h:outputText id="msg" value="#{productBean.msg}" />
+         </div>
+
+
+         <div class="mb-3">
+            <h:outputLabel for="availableAt" styleClass="form-label" value="#{ui['lbl.product.availableAt']}" />
             <h:inputText id="availableAt" value="#{productBean.curProduct.availableAt}" required="true" styleClass="form-control">
                <ui:remove><c:convertDateTime type="date" pattern="dd.MM.yyyy" /></ui:remove>
                <c:converter converterId="localDateConverter" />
@@ -35,12 +50,15 @@
          </div>
 
          <div class="mb-3">
-            <h:outputLabel for="price" styleClass="form-label" value="Preis" />
-            <h:inputText id="price" value="#{productBean.curProduct.price}" required="true" styleClass="form-control" />
+            <h:outputLabel for="price" styleClass="form-label" value="#{ui['lbl.product.price']}" />
+            <h:inputText id="price" value="#{productBean.curProduct.price}" styleClass="form-control">
+               <c:validateRequired />
+               <c:validateDoubleRange minimum="0.01" maximum="10000.00" />
+            </h:inputText>
             <h:message for="price" />
          </div>
 
-         <h:commandButton action="#{productBean.save()}" value="Speichern" styleClass="btn btn-success" />
+         <h:commandButton action="#{productBean.save()}" value="#{ui['btn.save']}" styleClass="btn btn-success" />
 
       </h:form>
 
